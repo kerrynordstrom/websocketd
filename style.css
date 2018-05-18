@@ -1,0 +1,10 @@
+#count {
+        font: bold 20px helvetica;
+        margin: auto;
+        padding: 10px;
+        text-align: center;
+      }
+
+canvas { 
+        border: 1px solid black; 
+      }
