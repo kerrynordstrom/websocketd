@@ -1,8 +1,8 @@
 let ws = new WebSocket('ws://localhost:8080/');
 
-let eventDataArr = [];
+let buffer;
 
-let draw = (eventDataArr) => {
+let draw = () => {
   let canvas = document.getElementById('randomizer');
   let cW = canvas.width;
   let cH = canvas.height;
@@ -23,18 +23,18 @@ let draw = (eventDataArr) => {
         (value << 8) |    // green
         value;            // red
       j++;
-      }
     }
+  }
 
   imageData.data.set(buf8);
   ctx.putImageData(imageData, 0, 0);
 }
 ws.onmessage = function (event) {
   $(document).ready(function () {
-    eventDataArr.push(event.data);
+    buffer = new Buffer(event.data, 'utf-8')
   });
   document.getElementById('count').textContent = event.data
 };
 ws.onclose = function () {
-  draw(eventDataArr)
+  draw()
 }
