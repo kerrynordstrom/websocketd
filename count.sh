@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for ((COUNT = 1; COUNT <= 5123; COUNT++)); do
+for ((COUNT = 1; COUNT <= 500; COUNT++)); do
   echo $(( RANDOM % 2 ))
-  sleep .00000001s
+  sleep .001s
 done
